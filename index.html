@@ -272,7 +272,7 @@
     <p class="eyebrow mono">AVAILABLE FOR HIRE</p>
     <h1>서비스 운영의 체계와 기준을<br>만들어온 실무형 리더, 신동현</h1>
     <p class="subtitle">전기차 충전 플랫폼 서비스 운영 · 사업기획 · PM/PO<br>18년간 현장의 문제를 정책, 프로세스, 시스템 개선으로 연결해왔습니다.</p>
-    <a class="hero-cta" href="mailto:osls00@naver.com">✉ 이메일로 연락하기</a>
+    <a class="hero-cta" href="mailto:osls00@naver.com"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M22 6l-10 7L2 6"></path></svg> 이메일로 연락하기</a>
 
     <div class="status-panel">
       <div class="status-cell">
@@ -285,7 +285,7 @@
       </div>
       <div class="status-cell">
         <div class="status-label mono">업무처리 효율</div>
-        <div class="status-value">최대 40%↑</div>
+        <div class="status-value">최대 40%<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;"><path d="M12 19V5M5 12l7-7 7 7"></path></svg></div>
       </div>
     </div>
   </header>
@@ -346,7 +346,7 @@
           <span class="log-title">충전기 개통 프로세스 자동화</span>
         </div>
         <div style="display:flex; align-items:center; gap:14px;">
-          <span class="log-metric">처리시간 40%↓</span>
+          <span class="log-metric">처리시간 40%<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;"><path d="M12 5v14M5 12l7 7 7-7"></path></svg></span>
           <span class="log-toggle">＋</span>
         </div>
       </div>
@@ -366,7 +366,7 @@
           <span class="log-title">운영자 중심 CMS 정보구조(IA) 재설계</span>
         </div>
         <div style="display:flex; align-items:center; gap:14px;">
-          <span class="log-metric">생산성 30%↑</span>
+          <span class="log-metric">생산성 30%<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;"><path d="M12 19V5M5 12l7-7 7 7"></path></svg></span>
           <span class="log-toggle">＋</span>
         </div>
       </div>
@@ -422,7 +422,7 @@
         <div style="color:var(--muted); font-size:13px; margin-bottom:6px;">채용 제안 및 문의를 환영합니다</div>
         <a class="email" href="mailto:osls00@naver.com">osls00@naver.com</a>
       </div>
-      <a class="contact-btn" href="mailto:osls00@naver.com">이메일 보내기</a>
+      <button class="contact-btn" onclick="copyEmail(this)" style="border:none; cursor:pointer;">이메일 복사하기</button>
     </div>
   </section>
 
@@ -431,10 +431,18 @@
 
 <!-- 모바일 하단 고정 연락처 CTA -->
 <div class="sticky-cta">
-  <a href="mailto:osls00@naver.com">✉ 이메일로 연락하기</a>
+  <a href="mailto:osls00@naver.com"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px; margin-right:4px;"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M22 6l-10 7L2 6"></path></svg>이메일로 연락하기</a>
 </div>
 
 <script>
+function copyEmail(btn){
+  navigator.clipboard.writeText('osls00@naver.com').then(function(){
+    const original = btn.textContent;
+    btn.textContent = '복사 완료!';
+    setTimeout(function(){ btn.textContent = original; }, 2000);
+  });
+}
+
 function toggleLog(head){
   const body = head.nextElementSibling;
   const toggle = head.querySelector('.log-toggle');
