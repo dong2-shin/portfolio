@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>신동현 — 서비스 운영 · 사업기획 · PM/PO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#12171D;
+    --card:#1B222B;
+    --card-border:#2A333D;
+    --text:#F4F6F5;
+    --muted:#8DA0AF;
+    --green:#3ED6A8;
+    --amber:#E8A33D;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'IBM Plex Sans KR', sans-serif;
+    line-height:1.6;
+  }
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  a{color:inherit;}
+  .wrap{max-width:880px; margin:0 auto; padding:0 24px;}
+
+  /* Sticky contact CTA (mobile-first emphasis) */
+  .sticky-cta{
+    position:fixed;
+    bottom:0; left:0; right:0;
+    z-index:50;
+    background:var(--bg);
+    border-top:1px solid var(--card-border);
+    padding:12px 20px;
+    display:flex;
+    justify-content:center;
+  }
+  .sticky-cta a{
+    width:100%;
+    max-width:420px;
+    text-align:center;
+    background:var(--green);
+    color:#0C1116;
+    font-weight:700;
+    padding:14px 20px;
+    border-radius:8px;
+    text-decoration:none;
+    font-size:15px;
+  }
+  @media(min-width:900px){
+    .sticky-cta{display:none;} /* desktop has inline contact CTA in hero/nav */
+  }
+  body{padding-bottom:76px;}
+  @media(min-width:900px){body{padding-bottom:0;}}
+
+  /* Hero */
+  header{
+    padding:72px 0 48px;
+    border-bottom:1px solid var(--card-border);
+    text-align:center;
+  }
+  .avatar{
+    width:120px; height:120px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid var(--green);
+    margin:0 auto 22px;
+    display:block;
+  }
+  .eyebrow{
+    font-size:12px;
+    letter-spacing:.12em;
+    color:var(--green);
+    margin:0 0 14px;
+  }
+  .eyebrow::before{content:"● "; }
+  h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:clamp(26px, 5vw, 38px);
+    font-weight:700;
+    margin:0 0 12px;
+    letter-spacing:-0.01em;
+  }
+  .subtitle{
+    color:var(--muted);
+    font-size:16px;
+    max-width:520px;
+    margin:0 auto 30px;
+  }
+  .hero-cta{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:14px 28px;
+    background:var(--green);
+    color:#0C1116;
+    font-weight:700;
+    text-decoration:none;
+    border-radius:8px;
+    font-size:15px;
+    margin-bottom:36px;
+  }
+  .status-panel{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    border:1px solid var(--card-border);
+    border-radius:8px;
+    overflow:hidden;
+    text-align:left;
+  }
+  .status-cell{
+    padding:16px 18px;
+    border-right:1px solid var(--card-border);
+  }
+  .status-cell:last-child{border-right:none;}
+  .status-label{
+    font-size:11px;
+    color:var(--muted);
+    letter-spacing:.08em;
+    margin-bottom:6px;
+  }
+  .status-value{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:19px;
+    font-weight:500;
+    color:var(--green);
+  }
+  @media(max-width:600px){
+    .status-panel{grid-template-columns:1fr;}
+    .status-cell{border-right:none; border-bottom:1px solid var(--card-border); text-align:center;}
+    .status-cell:last-child{border-bottom:none;}
+  }
+
+  section{padding:52px 0;}
+  section.divider{border-top:1px solid var(--card-border);}
+  h2{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:21px;
+    margin:0 0 26px;
+    display:flex; align-items:center; gap:10px;
+  }
+  h2 .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--muted);
+    border:1px solid var(--card-border);
+    padding:3px 8px;
+    border-radius:3px;
+    font-weight:400;
+  }
+
+  /* 소개 */
+  .intro-text{color:#D7DEE3; font-size:15.5px; max-width:640px;}
+  .skill-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:20px;}
+  .skill-chip{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    padding:6px 12px;
+    border:1px solid var(--card-border);
+    border-radius:20px;
+    color:var(--muted);
+  }
+
+  /* Timeline */
+  .timeline{border-left:1px solid var(--card-border); margin-left:6px;}
+  .tl-item{position:relative; padding:0 0 26px 24px;}
+  .tl-item::before{
+    content:"";
+    position:absolute; left:-5px; top:4px;
+    width:9px; height:9px; border-radius:50%;
+    background:var(--green);
+  }
+  .tl-item.past::before{background:var(--muted);}
+  .tl-period{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--muted); margin-bottom:4px;}
+  .tl-co{font-weight:700; font-size:15.5px; margin-bottom:2px;}
+  .tl-role{color:var(--muted); font-size:14px;}
+
+  /* Project log entries */
+  .log-entry{
+    border:1px solid var(--card-border);
+    border-radius:8px;
+    margin-bottom:14px;
+    background:var(--card);
+    overflow:hidden;
+  }
+  .log-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 20px;
+    cursor:pointer;
+    gap:16px;
+  }
+  .log-head:hover{background:#20293280;}
+  .log-title-wrap{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap;}
+  .log-status{color:var(--green); font-size:13px;}
+  .log-status::before{content:"● "; }
+  .log-title{font-weight:500; font-size:15.5px;}
+  .log-metric{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--amber);
+    font-size:13.5px;
+    white-space:nowrap;
+  }
+  .log-toggle{color:var(--muted); font-family:'IBM Plex Mono', monospace; font-size:13px;}
+  .log-body{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .3s ease;
+  }
+  .log-body.open{
+    max-height:600px;
+    border-top:1px solid var(--card-border);
+  }
+  .log-body-inner{padding:18px 20px 22px; display:grid; gap:14px;}
+  .trace-row{display:grid; grid-template-columns:56px 1fr; gap:12px; font-size:14px;}
+  .trace-key{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--muted);
+    padding-top:2px;
+  }
+  .trace-val{color:#D7DEE3;}
+
+  /* Contact */
+  .contact-box{
+    border:1px solid var(--card-border);
+    border-radius:10px;
+    padding:32px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .contact-box a.email{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:17px;
+    color:var(--green);
+    text-decoration:none;
+  }
+  .contact-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:12px 22px;
+    background:var(--green);
+    color:#0C1116;
+    font-weight:700;
+    text-decoration:none;
+    border-radius:8px;
+    font-size:14.5px;
+  }
+  footer{
+    text-align:center;
+    color:var(--muted);
+    font-size:12px;
+    padding:32px 0 48px;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header id="hero">
+    <img class="avatar" src="images/profile.png" alt="신동현 프로필 사진">
+    <p class="eyebrow mono">AVAILABLE FOR HIRE</p>
+    <h1>서비스 운영의 체계와 기준을<br>만들어온 실무형 리더, 신동현</h1>
+    <p class="subtitle">전기차 충전 플랫폼 서비스 운영 · 사업기획 · PM/PO<br>18년간 현장의 문제를 정책, 프로세스, 시스템 개선으로 연결해왔습니다.</p>
+    <a class="hero-cta" href="mailto:osls00@naver.com">✉ 이메일로 연락하기</a>
+
+    <div class="status-panel">
+      <div class="status-cell">
+        <div class="status-label mono">경력</div>
+        <div class="status-value">18년</div>
+      </div>
+      <div class="status-cell">
+        <div class="status-label mono">25년 국비 확보</div>
+        <div class="status-value">100억원</div>
+      </div>
+      <div class="status-cell">
+        <div class="status-label mono">업무처리 효율</div>
+        <div class="status-value">최대 40%↑</div>
+      </div>
+    </div>
+  </header>
+
+  <section class="divider" id="intro">
+    <h2>소개</h2>
+    <p class="intro-text">
+      총 18년간 서비스 운영, 사업기획, PM·PO, 조직관리 업무를 수행했습니다.
+      운영 실무를 두루 다룰 수 있는 올라운더로서, 현장에서 발생하는 문제를
+      정책·프로세스·시스템 개선으로 연결해 실질적인 성과를 만들어왔습니다.<br><br>
+      책임감이 강해 맡은 일은 끝까지 완수하며, 일정 중심으로 일하되
+      속도와 품질의 균형을 맞추는 것을 원칙으로 합니다.
+    </p>
+    <div class="skill-row">
+      <span class="skill-chip">서비스 운영</span>
+      <span class="skill-chip">사업기획</span>
+      <span class="skill-chip">서비스기획</span>
+      <span class="skill-chip">PM/PO</span>
+      <span class="skill-chip">조직관리</span>
+      <span class="skill-chip">RFP 분석</span>
+      <span class="skill-chip">공정관리</span>
+    </div>
+  </section>
+
+  <section class="divider" id="career">
+    <h2>경력 <span class="tag mono">TIMELINE</span></h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-period">2025.06 ~ 현재</div>
+        <div class="tl-co">펌프킨 · 전략신사업팀 차장/팀장</div>
+        <div class="tl-role">환경부 무공해차 전환 브랜드사업 총괄 — 25년도 20개 사업선정, 국비 약 100억원 확보</div>
+      </div>
+      <div class="tl-item past">
+        <div class="tl-period">2022.02 ~ 2025.06</div>
+        <div class="tl-co">차지인 · 운영팀 차장/팀장</div>
+        <div class="tl-role">전기차 충전 인프라 운영체계 설계 및 올라운더 운영 — 업무효율 40% 향상</div>
+      </div>
+      <div class="tl-item past">
+        <div class="tl-period">2017.06 ~ 2022.01</div>
+        <div class="tl-co">(주)아크 · 모비고사업팀 과장/팀원</div>
+        <div class="tl-role">스마트폰 데이터 전송서비스 운영 총괄, 콜센터 구축 및 운영관리, 마케팅 기획/운영</div>
+      </div>
+      <div class="tl-item past">
+        <div class="tl-period">2007.09 ~ 2016.07</div>
+        <div class="tl-co">지온네트웍스 · 운영사업부 대리/파트장</div>
+        <div class="tl-role">서비스 홈페이지·커뮤니티 기획, 콜센터 운영 및 인력 관리 실무 경험</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="divider" id="projects">
+    <h2>대표 프로젝트 <span class="tag mono">TOP 3</span></h2>
+
+    <div class="log-entry">
+      <div class="log-head" onclick="toggleLog(this)">
+        <div class="log-title-wrap">
+          <span class="log-status mono">완료</span>
+          <span class="log-title">충전기 개통 프로세스 자동화</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px;">
+          <span class="log-metric">처리시간 40%↓</span>
+          <span class="log-toggle">＋</span>
+        </div>
+      </div>
+      <div class="log-body">
+        <div class="log-body-inner">
+          <div class="trace-row"><div class="trace-key mono">문제</div><div class="trace-val">현장-사무실 간 유선 소통 중심으로 개통 건당 20~60분 소요 및 병목 발생</div></div>
+          <div class="trace-row"><div class="trace-key mono">해결</div><div class="trace-val">현장 셀프 개통 App 기획, 사진·통신 로그 자동화 및 사후 검수 프로세스 도입</div></div>
+          <div class="trace-row"><div class="trace-key mono">성과</div><div class="trace-val">업무 처리 시간 40% 단축</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="log-entry">
+      <div class="log-head" onclick="toggleLog(this)">
+        <div class="log-title-wrap">
+          <span class="log-status mono">완료</span>
+          <span class="log-title">운영자 중심 CMS 정보구조(IA) 재설계</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px;">
+          <span class="log-metric">생산성 30%↑</span>
+          <span class="log-toggle">＋</span>
+        </div>
+      </div>
+      <div class="log-body">
+        <div class="log-body-inner">
+          <div class="trace-row"><div class="trace-key mono">문제</div><div class="trace-val">개발자 관점 설계로 인한 단순 DB 조회 기능 및 다단계 정보 확인의 비효율</div></div>
+          <div class="trace-row"><div class="trace-key mono">해결</div><div class="trace-val">운영 업무 흐름(Workflow) 기반 IA 재설계 및 데이터 '통합 조회 화면' 구축</div></div>
+          <div class="trace-row"><div class="trace-key mono">성과</div><div class="trace-val">정보 확인 단계 축소 (3단계 → 2단계)로 생산성 30% 향상</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="log-entry">
+      <div class="log-head" onclick="toggleLog(this)">
+        <div class="log-title-wrap">
+          <span class="log-status mono">완료</span>
+          <span class="log-title">CS·AS 통합 관리 시스템 구축</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px;">
+          <span class="log-metric">VOC 50%↓</span>
+          <span class="log-toggle">＋</span>
+        </div>
+      </div>
+      <div class="log-body">
+        <div class="log-body-inner">
+          <div class="trace-row"><div class="trace-key mono">문제</div><div class="trace-val">콜센터-카카오톡 단톡방으로 이어지는 파편화된 접수로 대응 지연 및 히스토리 관리 불가</div></div>
+          <div class="trace-row"><div class="trace-key mono">해결</div><div class="trace-val">CS 전 과정 전산 자동화 및 실시간 현황 모니터링 통합 대시보드 구현</div></div>
+          <div class="trace-row"><div class="trace-key mono">성과</div><div class="trace-val">관련 고객 VOC 50% 감소 및 실시간 대응 체계 수립</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="divider" id="skills">
+    <h2>스킬 &amp; 툴</h2>
+    <div class="skill-row" style="margin-top:0;">
+      <span class="skill-chip">MS Office</span>
+      <span class="skill-chip">Figma</span>
+      <span class="skill-chip">Notion</span>
+      <span class="skill-chip">Jira</span>
+      <span class="skill-chip">ClickUp</span>
+      <span class="skill-chip">Python</span>
+      <span class="skill-chip">ChatGPT / Claude (생성형 AI)</span>
+      <span class="skill-chip">RFP 분석 · 공정관리</span>
+      <span class="skill-chip">조직관리 · KPI 설계</span>
+    </div>
+  </section>
+
+  <section class="divider" id="contact">
+    <h2>연락처</h2>
+    <div class="contact-box">
+      <div>
+        <div style="color:var(--muted); font-size:13px; margin-bottom:6px;">채용 제안 및 문의를 환영합니다</div>
+        <a class="email" href="mailto:osls00@naver.com">osls00@naver.com</a>
+      </div>
+      <a class="contact-btn" href="mailto:osls00@naver.com">이메일 보내기</a>
+    </div>
+  </section>
+
+  <footer>© 2026 신동현 · 서비스 운영 · 사업기획 · PM/PO</footer>
+</div>
+
+<!-- 모바일 하단 고정 연락처 CTA -->
+<div class="sticky-cta">
+  <a href="mailto:osls00@naver.com">✉ 이메일로 연락하기</a>
+</div>
+
+<script>
+function toggleLog(head){
+  const body = head.nextElementSibling;
+  const toggle = head.querySelector('.log-toggle');
+  const isOpen = body.classList.contains('open');
+  document.querySelectorAll('.log-body.open').forEach(b => {
+    b.classList.remove('open');
+    b.previousElementSibling.querySelector('.log-toggle').textContent = '＋';
+  });
+  if(!isOpen){
+    body.classList.add('open');
+    toggle.textContent = '－';
+  }
+}
+</script>
+
+</body>
+</html>
