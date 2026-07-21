@@ -152,7 +152,6 @@ font-weight:400;
 .intro-more{
 max-height:0;
 overflow:hidden;
-transition:max-height .4s ease;
 }
 .intro-more.open{max-height:3000px;}
 .intro-toggle-btn{
@@ -512,6 +511,7 @@ btn.textContent = '접기 －';
 } else {
 more.classList.remove('open');
 btn.textContent = '더보기 ＋';
+btn.scrollIntoView({behavior:'auto', block:'center'});
 }
 }
 function toggleLog(head){
